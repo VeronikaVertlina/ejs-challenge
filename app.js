@@ -20,8 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req, res){
-  res.render("home", {startingContent: homeStartingContent});
-  console.log(posts);
+  res.render("home", {startingContent: homeStartingContent, newContent: posts});
 });
 
 app.get("/about", function(req, res){
@@ -45,6 +44,15 @@ app.post("/compose", function(req,res){
   posts.push(post);
   res.redirect('/');
 });
+
+app.get("/posts/:namePost", function (req, res) {
+  // res.send(req.params.namePost)
+  if(req.params.namePost.match(req.body.postTitle)){
+    console.log("Match found");
+  }
+});
+
+
 
 
 
