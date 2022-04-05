@@ -56,11 +56,12 @@ app.get("/posts/:namePost", function (req, res) {
     const storedTitle = _.lowerCase(post.title);
     if(requestedTitle === storedTitle){
       // console.log("Match found!");
-      const storedContent = post.content;
-      const firstStoredTitle = post.title;
-      res.render("post", {title: firstStoredTitle, content: storedContent});
+      res.render("post", {
+        title: post.title,
+        content: post.content
+      });
     }
-    });
+  });
   // if(req.params.namePost.match(req.body.postTitle)){
   //   console.log("Match found");
   // }
